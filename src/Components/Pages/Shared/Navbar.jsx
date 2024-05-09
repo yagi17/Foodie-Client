@@ -4,19 +4,20 @@ const Navbar = () => {
   const link = (
     <>
       <li>
-        <NavLink to={'/'}>Item 1</NavLink>
+        <NavLink
+         to={'/'}>Home</NavLink>
       </li>
       <li>
-        <NavLink to={'/'}>Parent</NavLink>
+        <NavLink to={'/All-Foods'}>All Foods</NavLink>
       </li>
       <li>
-        <NavLink to={'/'}>Item 3</NavLink>
+        <NavLink to={'/Gallery'}>Gallery</NavLink>
       </li>
     </>
   );
 
   return (
-      <div className="navbar min-h-10 p-0 px-10 bg-[#F4F1EA]  sticky top-0">
+      <div className="navbar min-h-10 p-0 px-10 bg-[#F4F1EA] z-50 sticky top-0">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -37,7 +38,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold"
             >
               {link}
             </ul>
@@ -45,7 +46,7 @@ const Navbar = () => {
           <Link className="flex items-center text-2xl font-bold"><img className="size-10" src="/logo.png" alt="" />Foodie</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 ">{link}</ul>
+          <ul className="menu menu-horizontal px-1 font-bold">{link}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn  min-h-10 rounded-full">Button</a>

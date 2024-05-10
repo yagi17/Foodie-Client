@@ -1,6 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
+import Auth from "../../Authentication/Auth";
+import { TbLogout } from "react-icons/tb";
+import { IoIosSettings } from "react-icons/io";
+import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
+  const { user, logout, setLoading } = Auth();
+
+  console.log(user);
+  // console.log(user.email);
   const link = (
     <>
       {/* Home */}
@@ -34,22 +42,17 @@ const Navbar = () => {
       </li>
       {/* Add Food in menu */}
       <li className="group transition-all duration-100 ease-in-out">
-        <NavLink
-          className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
-          to={"/AddItems"}
-        >
-          Add Items
-        </NavLink>
+        {user ? (
+          <NavLink
+            className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
+            to={"/AddItems"}
+          >
+            Add Items
+          </NavLink>
+        ) : (
+          <h2 className="hidden"></h2>
+        )}
       </li>
-      {/* Profile
-      <li className="group transition-all duration-100 ease-in-out">
-        <NavLink
-          className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
-          to={"/Gallery"}
-        >
-          Gallery
-        </NavLink>
-      </li> */}
     </>
   );
 
@@ -90,12 +93,53 @@ const Navbar = () => {
           {link}
         </ul>
         <div className="">
-          <Link
-            to={"/Login"}
-            className="btn px-10 bg-yellow-500 hover:bg-yellow-500 rounded-full"
-          >
-            Login
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={
+                      user?.photoURL ||
+                      "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png"
+                    }
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-40"
+              >
+                <li>
+                  <a className="font-semibold text-[#D12525]">
+                    {user.displayName}
+                  </a>
+                </li>
+                <li>
+                  <Link to={"/user${id}"}>
+                    Settings
+                    <IoIosSettings />
+                  </Link>
+                </li>
+                <li>
+                  <Link onClick={logout}>
+                    Logout <TbLogout />
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link
+              to={"/Login"}
+              className="btn px-10 bg-yellow-500 hover:bg-yellow-500 rounded-full"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

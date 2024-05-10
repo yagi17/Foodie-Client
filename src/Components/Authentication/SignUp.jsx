@@ -1,19 +1,39 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Auth from "./Auth";
-import axios from "axios";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import SocialLogin from "./SocialLogin";
 
 const SignUp = () => {
   const { createUser, setLoading, UserProfile } = Auth();
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const naviGate = location?.state || "/";
 
   const [emailError, setEmailError] = useState();
   const [passwordError, setPasswordError] = useState();
 
+  // check password
+
+  const validatePassword = (password) => {
+    // Check for uppercase letter
+    if (!/[A-Z]/.test(password)) {
+      return "Password must contain at least one uppercase letter";
+    }
+    // Check for length
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long";
+    }
+    return;
+  };
+
+  // Update error message based on password input
+  const handlePasswordChange = (e) => {
+    const password = e.target.value;
+    const passwordError = validatePassword(password);
+    setPasswordError(passwordError);
+  };
+
+  // create user with email and password
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,7 +42,12 @@ const SignUp = () => {
     const password = form.password.value;
     const image = form.image.value;
     const user = { name, email, password, image };
-    console.log(user);
+    // console.log(user);
+    const checkPassword = validatePassword(password);
+    if (checkPassword) {
+      setPasswordError(passwordError);
+      return;
+    }
 
     setEmailError();
 
@@ -41,8 +66,7 @@ const SignUp = () => {
             console.log(data);
             if (data.insertedId) {
               // update user details
-              UserProfile(name, image)
-              .then(() => {
+              UserProfile(name, image).then(() => {
                 setLoading(true);
                 navigate("/");
                 Swal.fire({
@@ -101,10 +125,10 @@ const SignUp = () => {
                 placeholder="Email"
                 required
               />
+              {emailError && (
+                <p className="text-red-500 text-xs mt-1 pl-2">{emailError}</p>
+              )}
             </div>
-            {emailError && (
-              <p className="text-red-500 text-xs mt-1 pl-2">{emailError}</p>
-            )}
             <div>
               <label className=" dark:text-gray-400 text-lg">Password</label>
               <input
@@ -113,7 +137,13 @@ const SignUp = () => {
                 type="password"
                 placeholder="Password"
                 required
+                onChange={handlePasswordChange}
               />
+              {passwordError && (
+                <p className="text-red-500 text-xs pt-1 ml-2">
+                  {passwordError}
+                </p>
+              )}
             </div>
             <div>
               <label className="mb-2 dark:text-gray-400 text-lg">Image</label>
@@ -148,72 +178,7 @@ const SignUp = () => {
           </div>
 
           {/* <!-- Third Party Authentication Options --> */}
-          <div
-            id="third-party-auth"
-            className="flex items-center justify-center mt-4 flex-wrap"
-          >
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px]"
-                src="https://ucarecdn.com/8f25a2ba-bdcf-4ff1-b596-088f330416ef/"
-                alt="Google"
-              />
-            </button>
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px]"
-                src="https://ucarecdn.com/95eebb9c-85cf-4d12-942f-3c40d7044dc6/"
-                alt="Linkedin"
-              />
-            </button>
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px] filter dark:invert"
-                src="https://ucarecdn.com/be5b0ffd-85e8-4639-83a6-5162dfa15a16/"
-                alt="Github"
-              />
-            </button>
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px]"
-                src="https://ucarecdn.com/6f56c0f1-c9c0-4d72-b44d-51a79ff38ea9/"
-                alt="Facebook"
-              />
-            </button>
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px] dark:gray-100"
-                src="https://ucarecdn.com/82d7ca0a-c380-44c4-ba24-658723e2ab07/"
-                alt="twitter"
-              />
-            </button>
-
-            <button
-              href="#"
-              className="hover:scale-105 ease-in-out duration-300 shadow-lg p-2 rounded-lg m-1"
-            >
-              <img
-                className="max-w-[25px]"
-                src="https://ucarecdn.com/3277d952-8e21-4aad-a2b7-d484dad531fb/"
-                alt="apple"
-              />
-            </button>
-          </div>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>

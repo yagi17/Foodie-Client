@@ -1,7 +1,7 @@
-import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddItems = () => {
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;

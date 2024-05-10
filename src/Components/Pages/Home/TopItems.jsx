@@ -4,7 +4,7 @@ import ItemCard from "./Item Card/ItemCard";
 const TopItems = () => {
   const [topItems, setTopItems] = useState([]);
   const topSixItems = topItems.slice(0, 8);
-  console.log(topSixItems);
+  // console.log(topSixItems);
   //   console.log(topItems.slice(0,6));
 
   useEffect(() => {

@@ -5,39 +5,44 @@ import "./index.css";
 import App from "./App";
 import Home from "./Components/Pages/Home/Home";
 import Login from "./Components/Authentication/Login";
-import SignIn from "./Components/Authentication/SignIn";
+import SignUp from "./Components/Authentication/SignUp";
 import AllFood from "./Components/Pages/All Food/AllFood";
 import Gallery from "./Components/Pages/Gallery/Gallery";
+import AuthProvider from "./Components/Authentication/AuthProvider";
+import Error from "./Components/Pages/Shared/Error";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    children:[
+    errorElement: <Error></Error> ,
+    children: [
       {
-        path:'/',
-        element: <Home></Home>
+        path: "/",
+        element: <Home></Home>,
       },
       {
-        path:'/All-Foods',
-        element: <AllFood></AllFood>
+        path: "/All-Foods",
+        element: <AllFood></AllFood>,
       },
       {
-        path:'/Gallery',
-        element: <Gallery></Gallery>
+        path: "/Gallery",
+        element: <Gallery></Gallery>,
       },
       {
-        path:'/Register',
-        element: <SignIn></SignIn>
+        path: "/Register",
+        element: <SignUp></SignUp>,
       },
       {
-        path:'/Login',
-        element: <Login></Login>
+        path: "/Login",
+        element: <Login></Login>,
       },
-    ]
+    ],
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );

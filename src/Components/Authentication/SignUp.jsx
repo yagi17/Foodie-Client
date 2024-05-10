@@ -1,26 +1,53 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Auth from "./Auth";
 
-const Login = () => {
-  const handleLogIn = (e) => {
-    e.preventDefault()
+const SignUp = () => {
+  const { SignUp, setLoading } = Auth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const naviGate = location?.state || "/";
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const SignInData = {email, password}
-    console.log(SignInData);
+    const image = form.image.value;
+
+    const SignUpData = { name, email, password, image };
+    console.log(SignUpData);
+
+    SignUp(email, password).then(() => {
+      setLoading(true);
+      navigate("/");
+      const user = { name, email, password, image };
+    });
   };
+
   return (
-    <div className=" p-16">
+    <div className="">
       <div className="mx-auto max-w-xl bg-[#212121]">
-        <div className="border-[20px] border-transparent rounded-[20px] bg-[url('/Footer.png')]  shadow-lg xl:p-10 2xl:p-10 lg:p-10 md:p-10 sm:p-2 m-2">
-          <h1 className="pt-8 pb-6 font-bold text-5xl dark:text-gray-400 text-center cursor-default">
-            Log In
+        <div className="border-[15px] border-transparent rounded-[20px] bg-[url('/Footer.png')] shadow-lg xl:p-8 2xl:p-8 lg:p-8 md:p-8 sm:p-2 m-2">
+          <h1 className="py-5 font-bold text-5xl dark:text-gray-400 text-center cursor-default">
+            Sign Up
           </h1>
-          <form onSubmit={handleLogIn} className="space-y-4">
+          <form onSubmit={handleSignUp} className="space-y-4">
+            <div>
+              <label className="mb-2 dark:text-gray-400 text-lg">Name</label>
+              <input
+                name="name"
+                className="border p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                type="text"
+                placeholder="Name"
+                required
+              />
+            </div>
             <div>
               <label className="mb-2 dark:text-gray-400 text-lg">Email</label>
               <input
-                id="email"
+                name="email"
                 className="border p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
                 type="email"
                 placeholder="Email"
@@ -28,45 +55,51 @@ const Login = () => {
               />
             </div>
             <div>
-              <label className="mb-2 dark:text-gray-400 text-lg">
-                Password
-              </label>
+              <label className=" dark:text-gray-400 text-lg">Password</label>
               <input
-                id="password"
+                name="password"
                 className="border p-3 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
                 type="password"
                 placeholder="Password"
                 required
               />
             </div>
-            <button
+            <div>
+              <label className="mb-2 dark:text-gray-400 text-lg">Image</label>
+              <input
+                name="image"
+                className="border p-3 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300"
+                type="url"
+                placeholder="Image Url"
+              />
+            </div>
+            <input
               className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
+              value="Sign In"
               type="submit"
-            >
-              LOG IN
-            </button>
+            />
           </form>
           <div className="flex flex-col mt-4 items-center justify-center text-sm">
             <h3>
               <span className="cursor-default dark:text-gray-300">
-                Don't have an account?
+                Have an account?
               </span>
               <Link
-                to={"/Register"}
+                to={"/Login"}
                 className="group text-blue-400 transition-all duration-100 ease-in-out"
                 href="#"
               >
                 <span className="bg-left-bottom ml-1 bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
-                  Register here
+                  Log In
                 </span>
               </Link>
             </h3>
           </div>
 
-          {/* <!-- Social Authentication Options --> */}
+          {/* <!-- Third Party Authentication Options --> */}
           <div
             id="third-party-auth"
-            className="flex items-center justify-center mt-5 flex-wrap"
+            className="flex items-center justify-center mt-4 flex-wrap"
           >
             <button
               href="#"
@@ -136,4 +169,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

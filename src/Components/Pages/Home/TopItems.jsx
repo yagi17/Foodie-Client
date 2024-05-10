@@ -8,7 +8,7 @@ const TopItems = () => {
   //   console.log(topItems.slice(0,6));
 
   useEffect(() => {
-    fetch("data.json")
+    fetch("http://localhost:5000/allmenu")
       .then((res) => res.json())
       .then((data) => {
         setTopItems(data);
@@ -16,9 +16,9 @@ const TopItems = () => {
   }, []);
 
   return (
-    <div>
-      <h2 className="text-black text-5xl text-center mt-24 font-semibold">
-        Top Foods section
+    <div className="">
+      <h2 className="text-5xl text-center mt-24 font-semibold text-[#D12525]">
+        Popular Dishes
       </h2>
       <div id="menu" className="grid grid-cols-4 w-10/12 mx-auto gap-4 mt-10">
         {topSixItems.map((item, idx) => (

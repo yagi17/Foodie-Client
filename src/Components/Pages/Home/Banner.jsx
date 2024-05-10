@@ -21,7 +21,7 @@ const Banner = () => {
           <a onClick={handleClick}  href="#menu">
             <button className="bg-[#00813D] btn border-none hover:bg-[#00813D] text-white rounded-full py-2 px-6 flex items-center gap-2 mt-4">
               <MdRestaurantMenu />
-              Full Menu
+              Menu
               <MdRestaurantMenu />
             </button>
           </a>

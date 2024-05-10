@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import { useState } from "react";
 
 const SignUp = () => {
-  const { SignUp, setLoading, UserProfile } = Auth();
+  const { createUser, setLoading, UserProfile } = Auth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,7 +14,65 @@ const SignUp = () => {
   const [emailError, setEmailError] = useState();
   const [passwordError, setPasswordError] = useState();
 
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const image = form.image.value;
+    const user = { name, email, password, image };
+    console.log(user);
 
+    setEmailError();
+
+    createUser(email, password)
+      .then(() => {
+        // Create a new user on the server
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.insertedId) {
+              // update user details
+              UserProfile(name, image)
+              .then(() => {
+                setLoading(true);
+                navigate("/");
+                Swal.fire({
+                  title: "User has been created successfully!",
+                  icon: "success",
+                });
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: "Failed to create user",
+                icon: "error",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error(error);
+            Swal.fire({
+              title: "Error",
+              text: "Failed to create user",
+              icon: "error",
+            });
+          });
+      })
+      .catch((error) => {
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          setEmailError("Email already in use");
+        }
+      });
+  };
 
   return (
     <div className="">
@@ -44,6 +102,9 @@ const SignUp = () => {
                 required
               />
             </div>
+            {emailError && (
+              <p className="text-red-500 text-xs mt-1 pl-2">{emailError}</p>
+            )}
             <div>
               <label className=" dark:text-gray-400 text-lg">Password</label>
               <input
@@ -64,7 +125,7 @@ const SignUp = () => {
               />
             </div>
             <input
-              className="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
+              className="bg-gradient-to-r cursor-pointer from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out"
               value="Sign In"
               type="submit"
             />

@@ -1,30 +1,20 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Auth from "./Auth";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useState } from "react";
 
 const SignUp = () => {
-  const { SignUp, setLoading } = Auth();
+  const { SignUp, setLoading, UserProfile } = Auth();
 
   const navigate = useNavigate();
   const location = useLocation();
   const naviGate = location?.state || "/";
 
-  const handleSignUp = (e) => {
-    e.preventDefault();
-    const form = e.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const image = form.image.value;
+  const [emailError, setEmailError] = useState();
+  const [passwordError, setPasswordError] = useState();
 
-    const SignUpData = { name, email, password, image };
-    console.log(SignUpData);
 
-    SignUp(email, password).then(() => {
-      setLoading(true);
-      navigate("/");
-      const user = { name, email, password, image };
-    });
-  };
 
   return (
     <div className="">

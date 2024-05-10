@@ -3,7 +3,7 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
-  const { Name, Image, Category, Price } = item;
+  const { name, image, category, price } = item;
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
@@ -13,7 +13,7 @@ const ItemCard = ({ item }) => {
     >
       <figure className="px-10 pt-10">
         <img
-          src={Image}
+          src={image}
           className={`size-52 transform transition duration-500 ${
             isHovered ? "scale-110" : "scale-100"
           }`}
@@ -25,11 +25,11 @@ const ItemCard = ({ item }) => {
       </figure>
       <div className="card-body mt-4">
         <div className="badge badge-secondary bg-[#00813D] border-0">
-          {Category}
+          {category}
         </div>
         <div className="flex justify-between font-bold text-xl">
-          <h2 className="card-title">{Name}</h2>
-          <h2 className="text-[#D12525]">$ {Price}</h2>
+          <h2 className="card-title">{name}</h2>
+          <h2 className="text-[#D12525]">$ {price}</h2>
         </div>
 
         <div className="card-actions">

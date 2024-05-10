@@ -10,6 +10,7 @@ import AllFood from "./Components/Pages/All Food/AllFood";
 import Gallery from "./Components/Pages/Gallery/Gallery";
 import AuthProvider from "./Components/Authentication/AuthProvider";
 import Error from "./Components/Pages/Shared/Error";
+import AddItems from "./Components/Pages/Add Items/AddItems";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/Login",
         element: <Login></Login>,
+      },
+      {
+        path: "/AddItems",
+        element: <AddItems></AddItems>,
       },
     ],
   },

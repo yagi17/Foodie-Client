@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Cheeseburger",
+    "image": "https://i.ibb.co/JczwpqC/burger-2-1.png",
+    "category": "Burgers",
+    "price": 2.99
+  },
+  {
+    "name": "Veggie Burger",
+    "image": "https://i.ibb.co/c8wfzRf/burger.jpg",
+    "category": "Burgers",
+    "price": 3.49
+  },
+  {
+    "name": "Chicken Nuggets",
+    "image": "https://i.ibb.co/RjwZfDW/grilled-2.png",
+    "category": "Chicken",
+    "price": 1.99
+  },
+  {
+    "name": "Large Fries",
+    "image": "https://i.ibb.co/vZcfy57/french.jpg",
+    "category": "Sides",
+    "price": 1.89
+  },
+  {
+    "name": "Pepperoni Pizza",
+    "image": "https://i.ibb.co/48Dnbcb/banner-img.png",
+    "category": "Pizza",
+    "price": 8.99
+  },
+  {
+    "name": "Fish Sandwich",
+    "image": "https://i.ibb.co/vQ09fRx/veg-sand.jpg",
+    "category": "Sandwiches",
+    "price": 2.99
+  },
+  {
+    "name": "Shawarma",
+    "image": "https://i.ibb.co/qNQT9GL/ruti.png",
+    "category": "Shawarma",
+    "price": 1.49
+  },
+  {
+    "name": "Taco",
+    "image": "https://i.ibb.co/JRq9v3w/beef-ruti.png",
+    "category": "Tacos",
+    "price": 1.89
+  },
+  {
+    "name": "Family Meal",
+    "image": "https://i.ibb.co/5nmtgj9/main-food-2.png",
+    "category": "Set Menu",
+    "price": 19.99
+  },
+  {
+    "name": "BLT Sandwich",
+    "image": "https://i.ibb.co/71p0Q5N/rolls.jpg",
+    "category": "Sandwiches",
+    "price": 3.59
+  },
+  {
+    "name": "Vegan Salad Bowl",
+    "image": "https://i.ibb.co/dfy7fdf/pasta-2.png",
+    "category": "Salads",
+    "price": 5.49
+  }
+]

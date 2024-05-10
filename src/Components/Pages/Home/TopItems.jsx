@@ -8,7 +8,7 @@ const TopItems = () => {
   //   console.log(topItems.slice(0,6));
 
   useEffect(() => {
-    fetch("http://localhost:5000/allmenu")
+    fetch("http://localhost:5000/allMenu")
       .then((res) => res.json())
       .then((data) => {
         setTopItems(data);

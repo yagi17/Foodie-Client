@@ -12,6 +12,7 @@ import AuthProvider from "./Components/Authentication/AuthProvider";
 import Error from "./Components/Pages/Shared/Error";
 import AddItems from "./Components/Pages/Add Items/AddItems";
 import PrivateRoute from "./Components/Authentication/PrivateRoute";
+import MyList from "./Components/Pages/MyList/MyList";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/AddItems",
         element: <PrivateRoute><AddItems></AddItems></PrivateRoute>,
+      },
+      {
+        path: "/MyList",
+        element: <PrivateRoute><MyList></MyList></PrivateRoute>,
       },
     ],
   },

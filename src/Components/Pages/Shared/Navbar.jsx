@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 const Navbar = () => {
   const { user, logout, setLoading } = Auth();
 
-  console.log(user);
+  // console.log(user);
   // console.log(user.email);
   const link = (
     <>
@@ -48,6 +48,19 @@ const Navbar = () => {
             to={"/AddItems"}
           >
             Add Items
+          </NavLink>
+        ) : (
+          <h2 className="hidden"></h2>
+        )}
+      </li>
+      {/* Add my list */}
+      <li className="group transition-all duration-100 ease-in-out">
+        {user ? (
+          <NavLink
+            className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
+            to={"/MyList"}
+          >
+            My List
           </NavLink>
         ) : (
           <h2 className="hidden"></h2>

@@ -1,18 +1,22 @@
 import Swal from "sweetalert2";
+import Auth from "../../Authentication/Auth";
 
 const AddItems = () => {
+  const {user} = Auth()
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
-    const Name = form.name.value;
-    const Image = form.image.value;
-    const Category = form.category.value;
-    const Quantity = form.quantity.value;
-    const Description = form.description.value;
+    const name = form.name.value;
+    const image = form.image.value;
+    const category = form.category.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
     const price = form.price.value;
+    const pointPersonName = user.displayName;
+    const pointPersonEmail = user.email;
 
-    const handleData = { name, image, category, quantity, description };
+    const handleData = { name, image, category, quantity, description, price, pointPersonName, pointPersonEmail};
     // console.log(handleData);
 
     fetch("http://localhost:5000/allMenu", {
@@ -81,14 +85,15 @@ const AddItems = () => {
           </div>
 
           <div className="flex justify-between space-x-4">
+
             {/* Price  */}
             <div className="mb-4 w-full">
               <label className=" text-gray-700 font-medium mb-2">
                 Price
               </label>
               <input
-                type="number"
-                name="quantity"
+                type="text"
+                name="price"
                 className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
@@ -136,15 +141,6 @@ const AddItems = () => {
             value={"Add Item"}
             className="bg-blue-500 btn w-full text-white px-4 py-2 rounded-lg hover:bg-blue-600"
           />
-
-          {/* <div>
-            <button
-              type="submit"
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-            >
-              Submit
-            </button>
-          </div> */}
         </form>
       </div>
     </div>

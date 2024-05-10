@@ -3,66 +3,121 @@
     "name": "Cheeseburger",
     "image": "https://i.ibb.co/JczwpqC/burger-2-1.png",
     "category": "Burgers",
-    "price": 2.99
+    "price": 2.99,
+    "quantity": 50,
+    "description": "Khaite khub moja",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Veggie Burger",
     "image": "https://i.ibb.co/c8wfzRf/burger.jpg",
     "category": "Burgers",
-    "price": 3.49
+    "price": 3.49,
+    "quantity": 30,
+    "description": "Healthy and delicious veggie burger",
+    "email": "swaggybaba17@gmail.com",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Chicken Nuggets",
     "image": "https://i.ibb.co/RjwZfDW/grilled-2.png",
     "category": "Chicken",
-    "price": 1.99
+    "price": 1.99,
+    "quantity": 100,
+    "description": "Crispy and juicy chicken nuggets",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Large Fries",
     "image": "https://i.ibb.co/vZcfy57/french.jpg",
     "category": "Sides",
-    "price": 1.89
+    "price": 1.89,
+    "quantity": 80,
+    "description": "Perfectly golden and crispy french fries",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Pepperoni Pizza",
     "image": "https://i.ibb.co/48Dnbcb/banner-img.png",
     "category": "Pizza",
-    "price": 8.99
+    "price": 8.99,
+    "quantity": 20,
+    "description": "Classic pepperoni pizza with a perfect crust",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Fish Sandwich",
     "image": "https://i.ibb.co/vQ09fRx/veg-sand.jpg",
     "category": "Sandwiches",
-    "price": 2.99
+    "price": 2.99,
+    "quantity": 40,
+    "description": "Fresh and flavorful fish sandwich",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Shawarma",
     "image": "https://i.ibb.co/qNQT9GL/ruti.png",
     "category": "Shawarma",
-    "price": 1.49
+    "price": 1.49,
+    "quantity": 60,
+    "description": "Delicious and authentic shawarma wrap",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Taco",
     "image": "https://i.ibb.co/JRq9v3w/beef-ruti.png",
     "category": "Tacos",
-    "price": 1.89
+    "price": 1.89,
+    "quantity": 50,
+    "description": "Flavorful and filling beef tacos",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Family Meal",
     "image": "https://i.ibb.co/5nmtgj9/main-food-2.png",
     "category": "Set Menu",
-    "price": 19.99
+    "price": 19.99,
+    "quantity": 10,
+    "description": "Delicious family meal with a variety of dishes",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "BLT Sandwich",
     "image": "https://i.ibb.co/71p0Q5N/rolls.jpg",
     "category": "Sandwiches",
-    "price": 3.59
+    "price": 3.59,
+    "quantity": 30,
+    "description": "Classic BLT sandwich with crispy bacon",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   },
   {
     "name": "Vegan Salad Bowl",
     "image": "https://i.ibb.co/dfy7fdf/pasta-2.png",
     "category": "Salads",
-    "price": 5.49
+    "price": 5.49,
+    "quantity": 25,
+    "description": "Fresh and healthy vegan salad bowl",
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
+  },
+  {
+    "name": "Cheeseburger",
+    "image": "https://i.ibb.co/JczwpqC/burger-2-1.png",
+    "category": "Burgers",
+    "quantity": 50,
+    "description": "Khaite khub moja",
+    "price": 2.99,
+    "pointPersonName": "Nafis Sadik",
+    "pointPersonEmail": "swaggybaba17@gmail.com"
   }
 ]

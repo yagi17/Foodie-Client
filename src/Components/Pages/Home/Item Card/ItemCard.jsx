@@ -3,7 +3,7 @@ import { LiaShoppingBagSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
-  const { name, image, category, price } = item;
+  const {_id, name, image, category, price } = item;
   const [isHovered, setIsHovered] = useState(false);
   return (
     <div
@@ -33,8 +33,8 @@ const ItemCard = ({ item }) => {
         </div>
 
         <div className="card-actions">
-          <button className="btn  bg-yellow-500 hover:bg-yellow-500">
-            <Link className="flex items-center"> <span className="text-lg pr-1"><LiaShoppingBagSolid /></span> Order Now</Link>
+          <button className="btn  bg-[#FBB200] hover:bg-[#FBB200]">
+            <Link to={`/FoodDetails/${_id}`} className="flex items-center"> <span className="text-lg pr-1"><LiaShoppingBagSolid /></span> Order Now</Link>
           </button>
         </div>
       </div>

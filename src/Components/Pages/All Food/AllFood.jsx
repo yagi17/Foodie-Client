@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemCard from "../Home/Item Card/ItemCard";
 import Footer from "../Shared/Footer";
-import Auth from "../../Authentication/Auth";
+import Auth from "../../Hooks/Auth";
 
 const AllFood = () => {
   const { setLoading } = Auth();

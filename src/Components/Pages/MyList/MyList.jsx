@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
-import Auth from "../../Authentication/Auth";
+import Auth from "../../Hooks/Auth";
 import Footer from "../Shared/Footer";
 
 const MyList = () => {
@@ -16,19 +16,20 @@ const MyList = () => {
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    fetch(`https://travel-europe-server.vercel.app/touristSpot/myList/${email}`)
+    fetch(`http://localhost:5000/allMenu/list/${email}`)
       .then((res) => res.json())
       .then((data) => {
         setMyList(data);
       });
   }, [email]);
-  // console.log(myList);
+
 
   const handleDelete = (id) => {
     // console.log(id);
+    console.log('item removed');
     Swal.fire({
       title: "Are you sure ?",
-      text: "The data will be delete permanently",
+      text: "The data will be removed permanently",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -36,27 +37,30 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it !",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allmenu/${id}`, {
+        console.log('item delete');
+        fetch(`http://localhost:5000/allMenu/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())
           .then((data) => {
-            if (data.deletedCount > 0) {
+            if (data.acknowledged) {
               Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
+                title: "Item removed",
+                text: "Your file has been removed.",
                 icon: "success",
               });
               const remainingItems = myList.filter(
                 (listItem) => listItem._id !== id
               );
-              // console.log(remainingItems._id);
+              
               setMyList(remainingItems);
+
             }
           });
       }
     });
   };
+
 
   return (
     <div>
@@ -68,18 +72,21 @@ const MyList = () => {
           <thead>
             <tr className="">
               <th>Item No.</th>
+              <th>Image</th>
               <th>Dish Name</th>
               <th>Category</th>
               <th>Point Person</th>
-              <th>Actions</th>
+              <th className="md:pl-12">Actions</th>
             </tr>
           </thead>
           <tbody>
             {myList.map((myItem, index) => (
-              <tr className="hover:bg-yellow-500/20 duration-500" key={index}>
+              // console.log(myItem._id)
+              <tr className="hover" key={myItem._id}>
                 <td>{index + 1}</td>
-                <td></td>
-                <td></td>
+                <td><img className="w-10" src={myItem.image} alt={myItem.name} /></td>
+                <td>{myItem.name}</td>
+                <td>{myItem.category}</td>
                 <td>{user.displayName}</td>
                 <td>
                   <button>

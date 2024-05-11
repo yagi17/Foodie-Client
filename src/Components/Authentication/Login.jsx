@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialLogin from "./SocialLogin";
-import Auth from "./Auth";
+import Auth from "../Hooks/Auth";
 import Swal from "sweetalert2";
 
 const Login = () => {

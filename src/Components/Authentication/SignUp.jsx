@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import Auth from "./Auth";
+import Auth from "../Hooks/Auth";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import SocialLogin from "./SocialLogin";

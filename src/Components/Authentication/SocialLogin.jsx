@@ -1,48 +1,55 @@
 import Swal from "sweetalert2";
-import Auth from "./Auth";
-import { Navigate, useLocation } from "react-router-dom";
-
+import Auth from "../Hooks/Auth";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const naviGate = location?.state || "/";
+  // console.log(naviGate);
 
-    const location = useLocation();
-    const naviGate = location?.state || "/";
+  const { googleLogIn, gitHubLogin } = Auth();
+  const handleSocial = (socialProvider) => {
+    socialProvider().then((result) => {
+      if (result.user) {
+        const email = result.user.email;
+        const creationTime = result.user.metadata.creationTime;
+        const user = { email, creationTime };
 
-
-    const { googleLogIn, gitHubLogin} = Auth()
-    const handleSocial = (socialProvider) => {
-        socialProvider().then((result) => {
-          if (result.user) {
-            const email = result.user.email;
-            const creationTime = result.user.metadata.creationTime;
-            const user = { email, creationTime };
-    
-            // Post the user data to backend
-            fetch("http://localhost:5000/users", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(user),
-            })
-              .then((res) => res.json())
-              .then((data) => {
-                // console.log(data);
-                if (data.insertedId) {
-                  // Notify user of success
-                  Swal.fire({
-                    title: "User has been created successfully!",
-                    icon: "success",
-                  });
-                }
+        // Post the user data to backend
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(user),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.insertedId) {
+              const Toast = Swal.mixin({
+                toast: true,
+                position: "top-end",
+                showConfirmButton: false,
+                timer: 4000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.onmouseenter = Swal.stopTimer;
+                  toast.onmouseleave = Swal.resumeTimer;
+                },
               });
-    
-            // Redirect user after successful login
-            Navigate(naviGate);
-          }
-        });
-      };
-    
+              Toast.fire({
+                icon: "success",
+                title: "Logged in successfully",
+              });
+              navigate(naviGate);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <div

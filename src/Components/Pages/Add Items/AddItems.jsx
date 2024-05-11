@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import Auth from "../../Authentication/Auth";
+import Auth from "../../Hooks/Auth";
 
 const AddItems = () => {
   const {user} = Auth()

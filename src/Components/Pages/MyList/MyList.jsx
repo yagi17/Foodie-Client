@@ -6,27 +6,28 @@ import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
 import Auth from "../../Hooks/Auth";
 import Footer from "../Shared/Footer";
+import axios from "axios";
 
 const MyList = () => {
+  // const {setLoading} = Auth()
+  // setLoading(false)
   const { user } = Auth();
-  const { email } = user;
+  const { email, displayName } = user;
   // console.log(user);
 
   // const loadData = useLoaderData();
   const [myList, setMyList] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allMenu/list/${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setMyList(data);
-      });
+    axios.get(`http://localhost:5000/allMenu/list/${email}`)
+    .then((res) => {
+      setMyList(res.data);
+    });
   }, [email]);
-
 
   const handleDelete = (id) => {
     // console.log(id);
-    console.log('item removed');
+    console.log("item removed");
     Swal.fire({
       title: "Are you sure ?",
       text: "The data will be removed permanently",
@@ -37,7 +38,7 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it !",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log('item delete');
+        console.log("item delete");
         fetch(`http://localhost:5000/allMenu/${id}`, {
           method: "delete",
         })
@@ -52,21 +53,19 @@ const MyList = () => {
               const remainingItems = myList.filter(
                 (listItem) => listItem._id !== id
               );
-              
-              setMyList(remainingItems);
 
+              setMyList(remainingItems);
             }
           });
       }
     });
   };
 
-
   return (
     <div>
       <div className="w-10/12 mx-auto my-10">
         <Helmet>
-          <title>My List</title>
+          <title>{displayName}'s List</title>
         </Helmet>
         <table className="table">
           <thead>
@@ -84,7 +83,9 @@ const MyList = () => {
               // console.log(myItem._id)
               <tr className="hover" key={myItem._id}>
                 <td>{index + 1}</td>
-                <td><img className="w-10" src={myItem.image} alt={myItem.name} /></td>
+                <td>
+                  <img className="w-10" src={myItem.image} alt={myItem.name} />
+                </td>
                 <td>{myItem.name}</td>
                 <td>{myItem.category}</td>
                 <td>{user.displayName}</td>

@@ -13,6 +13,7 @@ import Error from "./Components/Pages/Shared/Error";
 import AddItems from "./Components/Pages/Add Items/AddItems";
 import PrivateRoute from "./Components/Authentication/PrivateRoute";
 import MyList from "./Components/Pages/MyList/MyList";
+import Profile from "./Components/Pages/User/Profile/Profile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/MyList",
         element: <PrivateRoute><MyList></MyList></PrivateRoute>,
+      },
+      {
+        path: "/Profile",
+        element: <PrivateRoute><Profile></Profile></PrivateRoute>,
       },
     ],
   },

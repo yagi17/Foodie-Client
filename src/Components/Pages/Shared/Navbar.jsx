@@ -1,14 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import Auth from "../../Hooks/Auth";
-import { TbLogout } from "react-icons/tb";
-import { RiShoppingCartFill } from "react-icons/ri";
 import { FaUserEdit } from "react-icons/fa";
+import { FiLogOut } from "react-icons/fi";
+import { MdAddToPhotos } from "react-icons/md";
+import { IoIosAddCircle } from "react-icons/io";
 
 const Navbar = () => {
   const { user, logout } = Auth();
-
-  // console.log(user);
-  // console.log(user.email);
   const link = (
     <>
       {/* Home */}
@@ -41,33 +39,6 @@ const Navbar = () => {
         </NavLink>
       </li>
 
-      {/* Add Food in menu */}
-      {user ? (
-        <li className="group transition-all duration-100 ease-in-out">
-          <NavLink
-            className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
-            to={"/AddItems"}
-          >
-            Add Items
-          </NavLink>
-        </li>
-      ) : (
-        ""
-      )}
-
-      {/* Add my list */}
-      {user ? (
-        <li className="group transition-all duration-100 ease-in-out">
-          <NavLink
-            className={`bg-left-bottom ml-1 bg-gradient-to-r from-yellow-400 to-yellow-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out`}
-            to={"/MyList"}
-          >
-            My List
-          </NavLink>
-        </li>
-      ) : (
-        ""
-      )}
     </>
   );
 
@@ -128,23 +99,29 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-40"
+              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="font-semibold">
+                <a className="font-bold">
                   <FaUserEdit />{" "}
                   <span className=" text-[#D12525]">{user.displayName}</span>
                 </a>
               </li>
-              <li>
-                <Link to={"/curt${id}"}>
-                  <RiShoppingCartFill />
-                  View Curt
+              <li className="hover:font-bold">
+                <Link to={"/MyList"}>
+                  <MdAddToPhotos />
+                  My added food items
                 </Link>
               </li>
-              <li>
+              <li className="hover:font-bold">
+                <Link to={"/AddItems"}>
+                  <IoIosAddCircle />
+                  Add a food item
+                </Link>
+              </li>
+              <li className="hover:font-bold">
                 <Link onClick={logout} to={"/Login"}>
-                  <TbLogout /> Logout
+                  <FiLogOut /> Logout
                 </Link>
               </li>
             </ul>

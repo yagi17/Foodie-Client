@@ -1,8 +1,9 @@
 import Swal from "sweetalert2";
 import Auth from "../../Hooks/Auth";
+import { Helmet } from "react-helmet";
 
 const AddItems = () => {
-  const {user} = Auth()
+  const { user } = Auth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,7 +17,16 @@ const AddItems = () => {
     const pointPersonName = user.displayName;
     const pointPersonEmail = user.email;
 
-    const handleData = { name, image, category, quantity, description, price, pointPersonName, pointPersonEmail};
+    const handleData = {
+      name,
+      image,
+      category,
+      quantity,
+      description,
+      price,
+      pointPersonName,
+      pointPersonEmail,
+    };
     // console.log(handleData);
 
     fetch("http://localhost:5000/allMenu", {
@@ -51,97 +61,101 @@ const AddItems = () => {
   };
 
   return (
-    <div className="h-screen">
-      <div className="bg-white border rounded-lg px-8 py-6 mx-auto my-8 max-w-5xl">
-        <h2 className="text-2xl text-center font-medium mb-4">Add Food Item</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="flex justify-between space-x-4">
-            {/* Name */}
+    <div>
+      <Helmet>
+        <title>Foodie | Add Item</title>
+      </Helmet>
+      <div className="h-screen">
+        <div className="bg-white border rounded-lg px-8 py-6 mx-auto my-8 max-w-5xl">
+          <h2 className="text-2xl text-center font-medium mb-4">
+            Add Food Item
+          </h2>
+          <form onSubmit={handleSubmit}>
+            <div className="flex justify-between space-x-4">
+              {/* Name */}
+              <div className="mb-4 w-full">
+                <label className=" text-gray-700 font-medium mb-2">
+                  Food Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                  required
+                />
+              </div>
+
+              {/* Category */}
+              <div className="mb-4 w-full">
+                <label className=" text-gray-700 font-medium mb-2">
+                  Food Category
+                </label>
+                <input
+                  type="text"
+                  name="category"
+                  className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-between space-x-4">
+              {/* Price  */}
+              <div className="mb-4 w-full">
+                <label className=" text-gray-700 font-medium mb-2">Price</label>
+                <input
+                  type="text"
+                  name="price"
+                  className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                  required
+                />
+              </div>
+
+              {/* Quantity  */}
+              <div className="mb-4 w-full">
+                <label className=" text-gray-700 font-medium mb-2">
+                  Quantity
+                </label>
+                <input
+                  type="number"
+                  name="quantity"
+                  className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
+                  required
+                />
+              </div>
+            </div>
+            {/* Image */}
             <div className="mb-4 w-full">
-              <label className=" text-gray-700 font-medium mb-2">
-                Food Name
+              <label className=" w-full text-gray-700 font-medium mb-2">
+                Food Image
               </label>
               <input
-                type="text"
-                id="name"
-                name="name"
+                type="url"
+                name="image"
                 className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
                 required
               />
             </div>
-
-            {/* Category */}
-            <div className="mb-4 w-full">
-              <label className=" text-gray-700 font-medium mb-2">
-                Food Category
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-2">
+                Description
               </label>
-              <input
-                type="text"
-                name="category"
+              <textarea
+                id="message"
+                name="description"
                 className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
-            </div>
-          </div>
-
-          <div className="flex justify-between space-x-4">
-
-            {/* Price  */}
-            <div className="mb-4 w-full">
-              <label className=" text-gray-700 font-medium mb-2">
-                Price
-              </label>
-              <input
-                type="text"
-                name="price"
-                className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
+                rows="5"
+              ></textarea>
             </div>
 
-            {/* Quantity  */}
-            <div className="mb-4 w-full">
-              <label className=" text-gray-700 font-medium mb-2">
-                Quantity
-              </label>
-              <input
-                type="number"
-                name="quantity"
-                className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-                required
-              />
-            </div>
-          </div>
-          {/* Image */}
-          <div className="mb-4 w-full">
-            <label className=" w-full text-gray-700 font-medium mb-2">
-              Food Image
-            </label>
             <input
-              type="url"
-              name="image"
-              className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-              required
+              type="submit"
+              value={"Add Item"}
+              className="bg-blue-500 btn w-full text-white px-4 py-2 rounded-lg hover:bg-blue-600"
             />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">
-              Description
-            </label>
-            <textarea
-              id="message"
-              name="description"
-              className="border border-gray-400 p-2 w-full rounded-lg focus:outline-none focus:border-blue-400"
-              rows="5"
-            ></textarea>
-          </div>
-
-          <input
-            type="submit"
-            value={"Add Item"}
-            className="bg-blue-500 btn w-full text-white px-4 py-2 rounded-lg hover:bg-blue-600"
-          />
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   );

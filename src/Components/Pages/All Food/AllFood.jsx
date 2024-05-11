@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ItemCard from "../Home/Item Card/ItemCard";
 import Footer from "../Shared/Footer";
 import Auth from "../../Hooks/Auth";
+import { Helmet } from "react-helmet";
 
 const AllFood = () => {
   const { setLoading } = Auth();
@@ -17,6 +18,9 @@ const AllFood = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <title>Foodie | Full Menu</title>
+      </Helmet>
       <div className="m-10">
         <h2 className="text-4xl text-center font-semibold text-[#D12525]">
           Browse Our Menu

@@ -43,7 +43,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar min-h-10 px-10 bg-[#F4F1EA] z-50 sticky top-0">
+    <div className="navbar min-h-10 flex justify-between md:px-10 bg-[#F4F1EA] z-50 sticky top-0">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -79,7 +79,7 @@ const Navbar = () => {
           {link}
         </ul>
       </div>
-      <div className="lg:pl-8">
+      <div className="flex justify-end lg:pl-8">
         {user ? (
           <div className="dropdown dropdown-end">
             <div
@@ -117,6 +117,12 @@ const Navbar = () => {
                 <Link to={"/AddItems"}>
                   <IoIosAddCircle />
                   Add a food item
+                </Link>
+              </li>
+              <li className="hover:font-bold">
+                <Link to={`/PurchasePage/${user.email}`}>
+                  <IoIosAddCircle />
+                  My Purchase Page
                 </Link>
               </li>
               <li className="hover:font-bold">

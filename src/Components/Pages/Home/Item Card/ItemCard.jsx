@@ -34,7 +34,7 @@ const ItemCard = ({ item }) => {
 
         <div className="card-actions">
           <button className="btn  bg-[#FBB200] hover:bg-[#FBB200]">
-            <Link to={`/FoodDetails/${_id}`} className="flex items-center"> <span className="text-lg pr-1"><LiaShoppingBagSolid /></span> Order Now</Link>
+            <Link to={`/FoodDetails/${_id}`} className="flex items-center"> <span className="text-lg pr-1"><LiaShoppingBagSolid /></span> View More</Link>
           </button>
         </div>
       </div>

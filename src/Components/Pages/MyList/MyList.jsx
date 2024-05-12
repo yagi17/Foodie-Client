@@ -53,7 +53,6 @@ const MyList = () => {
               const remainingItems = myList.filter(
                 (listItem) => listItem._id !== id
               );
-
               setMyList(remainingItems);
             }
           });
@@ -69,7 +68,7 @@ const MyList = () => {
         </Helmet>
         <table className="table">
           <thead>
-            <tr className="">
+            <tr className="font-bold">
               <th>Item No.</th>
               <th>Image</th>
               <th>Dish Name</th>
@@ -92,7 +91,7 @@ const MyList = () => {
                 <td>
                   <button>
                     <Link
-                      to={`/updateDetails/${myItem._id}`}
+                      to={`/Update/${myItem._id}`}
                       // onClick={() => handleDelete}
                       className="btn hover:bg-transparent bg-transparent border-0 text-xl text-blue-500"
                     >

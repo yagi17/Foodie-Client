@@ -12,7 +12,7 @@ const Banner = () => {
           <p className="w-96 text-xs text-yellow-500 font-semibold pl-2">
             WHERE QUALITY MEET EXCELLENT SERVICE.
           </p>
-          <h2 className="text-9xl text-white font-bold">
+          <h2 className="lg:text-9xl text-white font-bold">
             Your <br />
             <span className="text-yellow-500">Favorite</span>
             <br /> Meal
@@ -27,7 +27,7 @@ const Banner = () => {
           </a>
         </div>
         <div>
-          <img className="w-[650px]" src="/banner.png" alt="bannerImage" />
+          <img className="lg w-[650px]" src="/banner.png" alt="bannerImage" />
         </div>
       </div>
     </div>

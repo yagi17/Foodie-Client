@@ -20,7 +20,7 @@ const TopItems = () => {
       <h2 className="text-5xl text-center mt-24 font-semibold text-[#D12525]">
         Popular Dishes
       </h2>
-      <div id="menu" className="grid grid-cols-4 w-10/12 mx-auto gap-4 mt-10">
+      <div id="menu" className="grid lg:grid-cols-4 md:grid-cols-3 w-10/12 mx-auto gap-4 mt-10">
         {topSixItems.map((item, idx) => (
           <ItemCard key={idx} item={item}></ItemCard>
         ))}

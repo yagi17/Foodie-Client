@@ -27,7 +27,7 @@ const MyList = () => {
 
   const handleDelete = (id) => {
     // console.log(id);
-    console.log("item removed");
+    // console.log("item removed");
     Swal.fire({
       title: "Are you sure ?",
       text: "The data will be removed permanently",
@@ -38,7 +38,7 @@ const MyList = () => {
       confirmButtonText: "Yes, delete it !",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log("item delete");
+        // console.log("item delete");
         fetch(`http://localhost:5000/allMenu/${id}`, {
           method: "delete",
         })

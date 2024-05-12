@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import Auth from "../Hooks/Auth";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const navigate = useNavigate();

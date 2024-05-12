@@ -3,7 +3,6 @@ import Footer from "../Shared/Footer";
 import Banner from "./Banner";
 import TopItems from "./TopItems";
 import Marquee from "react-fast-marquee";
-import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Home = () => {
@@ -39,9 +38,8 @@ const Home = () => {
             />
           </Marquee>
         </div>
-        <Skeleton />
+
         <TopItems></TopItems>
-        <Skeleton count={5} />
 
         <h2 className="text-center my-10 text-2xl text-[#D12525] font-medium hover:link">
           <Link to={"/All-Foods"}>View Full Menu</Link>

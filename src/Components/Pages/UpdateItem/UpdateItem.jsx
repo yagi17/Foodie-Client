@@ -23,7 +23,7 @@ const UpdateItem = () => {
       description,
       price,
     };
-    console.log(updateDetails);
+    // console.log(updateDetails);
 
     // send data to the server
     fetch(`http://localhost:5000/allMenu/${id}`, {

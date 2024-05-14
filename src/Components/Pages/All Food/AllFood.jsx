@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import ItemCard from "../Home/Item Card/ItemCard";
 import Footer from "../Shared/Footer";
-import Auth from "../../Hooks/Auth";
+// import Auth from "../../Hooks/Auth";
 import { Helmet } from "react-helmet";
 
 const AllFood = () => {
-  const { setLoading } = Auth();
-  setLoading(true);
+  // const { setLoading } = Auth();
+  // setLoading(true);
   const [topItems, setTopItems] = useState([]);
 
   useEffect(() => {

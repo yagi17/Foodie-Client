@@ -63,10 +63,11 @@ const SignUp = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.insertedId) {
               // update user details
-              UserProfile(name, image).then(() => {
+              UserProfile(name, image)
+              .then(() => {
                 setLoading(true);
                 navigate("/");
                 Swal.fire({

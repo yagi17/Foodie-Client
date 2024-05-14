@@ -7,6 +7,7 @@ import { IoIosAddCircle } from "react-icons/io";
 
 const Navbar = () => {
   const { user, logout } = Auth();
+  // setLoading(true)
   const link = (
     <>
       {/* Home */}

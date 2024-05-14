@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import TopItems from "./TopItems";
 import Marquee from "react-fast-marquee";
 import "react-loading-skeleton/dist/skeleton.css";
+import FeatureSection from "./FeatureSection";
 
 const Home = () => {
   return (
@@ -40,10 +41,13 @@ const Home = () => {
         </div>
 
         <TopItems></TopItems>
-
-        <h2 className="text-center my-10 text-2xl text-[#D12525] font-medium hover:link">
+        <h2 className="text-center my-10 text-[#D12525] font-medium hover:link">
           <Link to={"/All-Foods"}>View Full Menu</Link>
         </h2>
+        <div className="my-8">
+          {" "}
+          <FeatureSection></FeatureSection>
+        </div>
       </div>
       <Footer></Footer>
     </div>

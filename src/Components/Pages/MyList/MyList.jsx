@@ -6,7 +6,8 @@ import { CiEdit } from "react-icons/ci";
 import Swal from "sweetalert2";
 import Auth from "../../Hooks/Auth";
 import Footer from "../Shared/Footer";
-import axios from "axios";
+import useAxiosHook from "../../Hooks/axiosHook";
+
 
 const MyList = () => {
   // const {setLoading} = Auth()
@@ -17,13 +18,14 @@ const MyList = () => {
 
   // const loadData = useLoaderData();
   const [myList, setMyList] = useState([]);
+  const axiosSecure = useAxiosHook()
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/allMenu/list/${email}`)
-    .then((res) => {
-      setMyList(res.data);
-    });
-  }, [email]);
+      axiosSecure.get(`/allMenu/list/${email}`)
+      .then(res=>{
+        setMyList(res.data)
+      })
+  }, [email, axiosSecure]);
 
   const handleDelete = (id) => {
     // console.log(id);

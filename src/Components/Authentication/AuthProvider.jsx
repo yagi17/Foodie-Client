@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "./firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
@@ -59,26 +60,29 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const savedUser = localStorage.getItem("user");
-    if (savedUser) {
-      const user = JSON.parse(savedUser);
-      setUser(user);
-    }
-
     // set user
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setLoading(false);
+      setUser(currentUser);
+      // console.log("current user:", currentUser);
+      const userEmail = currentUser?.email || user?.email;
+      const existingUser = { email: userEmail };
+      // Issue a token to the user
       if (currentUser) {
-        setLoading(false);
-        setUser(currentUser);
-
-        // Also save user in localStorage
-        localStorage.setItem("user", JSON.stringify(currentUser));
+        axios
+          .post("http://localhost:5000/cookies", existingUser, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            // console.log("token response", res.data);
+          });
       } else {
-        setLoading(false);
-        setUser(currentUser);
-
-        // Remove user from localStorage
-        localStorage.removeItem("user");
+        axios.post("http://localhost:5000/logout", existingUser, {
+          withCredentials: true,
+        })
+        .then(res =>{
+          // console.log(res.data);
+        })
       }
     });
     return () => unsubscribe();

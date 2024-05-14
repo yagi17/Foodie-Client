@@ -3,26 +3,22 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import Footer from "../Shared/Footer";
+import useAxiosHook from "../../Hooks/axiosHook";
 
 const PurchasePage = () => {
   const { email } = useParams();
-  //   console.log(email);
 
   const [curt, setCurt] = useState([]);
-
-  //   console.log(curt);
+  const axiosSecure = useAxiosHook()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/curt/${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setCurt(data);
-      });
-  }, [email, setCurt]);
+    axiosSecure.get(`/curt/${email}`)
+    .then(res=>{
+      setCurt(res.data);
+    })
+  }, [email, setCurt, axiosSecure]);
 
   const handleDelete = (id) => {
-    // console.log(id);
-    // console.log("item removed");
     Swal.fire({
       title: "Are you sure ?",
       text: "The data will be removed permanently",

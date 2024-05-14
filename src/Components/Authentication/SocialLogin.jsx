@@ -32,12 +32,9 @@ const SocialLogin = () => {
                 toast: true,
                 position: "top-end",
                 showConfirmButton: false,
-                timer: 4000,
+                timer: 1000,
                 timerProgressBar: true,
-                didOpen: (toast) => {
-                  toast.onmouseenter = Swal.stopTimer;
-                  toast.onmouseleave = Swal.resumeTimer;
-                },
+
               });
               Toast.fire({
                 icon: "success",

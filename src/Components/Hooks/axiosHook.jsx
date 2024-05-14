@@ -4,7 +4,7 @@ import Auth from "./Auth";
 import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://foodie-server-eight.vercel.app",
   withCredentials: true,
 });
 

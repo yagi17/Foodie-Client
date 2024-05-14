@@ -41,7 +41,7 @@ const MyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("item delete");
-        fetch(`http://localhost:5000/allMenu/${id}`, {
+        fetch(`https://foodie-server-eight.vercel.app/allMenu/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())

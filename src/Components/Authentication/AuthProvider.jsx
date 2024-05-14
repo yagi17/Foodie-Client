@@ -70,14 +70,14 @@ const AuthProvider = ({ children }) => {
       // Issue a token to the user
       if (currentUser) {
         axios
-          .post("http://localhost:5000/cookies", existingUser, {
+          .post("https://foodie-server-eight.vercel.app/cookies", existingUser, {
             withCredentials: true,
           })
           .then((res) => {
             // console.log("token response", res.data);
           });
       } else {
-        axios.post("http://localhost:5000/logout", existingUser, {
+        axios.post("https://foodie-server-eight.vercel.app/logout", existingUser, {
           withCredentials: true,
         })
         .then(res =>{

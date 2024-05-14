@@ -36,7 +36,7 @@ const SingleFood = () => {
 
   // get food from menu by id
   useEffect(() => {
-    axios.get(`http://localhost:5000/allMenu/${id}`).then((response) => {
+    axios.get(`https://foodie-server-eight.vercel.app/allMenu/${id}`).then((response) => {
       const matchedData = response.data.find((food) => food._id === id);
       setFood(matchedData);
     });
@@ -54,7 +54,7 @@ const SingleFood = () => {
     const orderData = { foodImage, orderQuantity, foodPrice, foodName, foodId };
 
     axios
-      .post(`http://localhost:5000/curt/${user?.email}`, orderData)
+      .post(`https://foodie-server-eight.vercel.app/curt/${user?.email}`, orderData)
       .then((data) => {
         // console.log('data addeed');
         if (data.data.insertedId) {
@@ -66,7 +66,7 @@ const SingleFood = () => {
             confirmButtonText: "Done",
           });
           // Decrease the quantity of the food item in the database
-          fetch(`http://localhost:5000/allMenu/${food._id}`, {
+          fetch(`https://foodie-server-eight.vercel.app/allMenu/${food._id}`, {
             method: "PATCH",
             headers: {
               "content-type": "application/json",

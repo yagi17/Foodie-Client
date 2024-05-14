@@ -29,7 +29,7 @@ const AddItems = () => {
     };
     // console.log(handleData);
 
-    fetch("http://localhost:5000/allMenu", {
+    fetch("https://foodie-server-eight.vercel.app/allMenu", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

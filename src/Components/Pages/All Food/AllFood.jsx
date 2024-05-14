@@ -10,7 +10,7 @@ const AllFood = () => {
   const [topItems, setTopItems] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allMenu")
+    fetch("https://foodie-server-eight.vercel.app/allMenu")
       .then((res) => res.json())
       .then((data) => {
         setTopItems(data);

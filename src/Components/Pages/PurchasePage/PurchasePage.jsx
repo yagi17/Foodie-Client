@@ -30,7 +30,7 @@ const PurchasePage = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("item delete");
-        fetch(`https://foodie-server-eight.vercel.app/curt/${email}/${id}`, {
+        fetch(`https://foodie-server-sand.vercel.app/curt/${email}/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())

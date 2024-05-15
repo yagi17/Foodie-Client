@@ -26,7 +26,7 @@ const MyList = () => {
         setMyList(res.data)
       })
   }, [email, axiosSecure]);
-
+  // https://foodie-server-sand.vercel.app
   const handleDelete = (id) => {
     // console.log(id);
     // console.log("item removed");
@@ -41,7 +41,7 @@ const MyList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // console.log("item delete");
-        fetch(`https://foodie-server-eight.vercel.app/allMenu/${id}`, {
+        fetch(`https://foodie-server-sand.vercel.app/allMenu/${id}`, {
           method: "delete",
         })
           .then((res) => res.json())

@@ -26,7 +26,7 @@ const UpdateItem = () => {
     // console.log(updateDetails);
 
     // send data to the server
-    fetch(`https://foodie-server-eight.vercel.app/allMenu/${id}`, {
+    fetch(`https://foodie-server-sand.vercel.app/allMenu/${id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

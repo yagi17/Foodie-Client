@@ -54,7 +54,7 @@ const SignUp = () => {
     createUser(email, password)
       .then(() => {
         // Create a new user on the server
-        fetch("https://foodie-server-eight.vercel.app/users", {
+        fetch("https://foodie-server-sand.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

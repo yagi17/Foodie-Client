@@ -8,7 +8,7 @@ const TopItems = () => {
   //   console.log(topItems.slice(0,6));
 
   useEffect(() => {
-    fetch("https://foodie-server-eight.vercel.app/allMenu")
+    fetch("https://foodie-server-sand.vercel.app/allMenu")
       .then((res) => res.json())
       .then((data) => {
         setTopItems(data);

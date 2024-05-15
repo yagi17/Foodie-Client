@@ -17,7 +17,7 @@ const SocialLogin = () => {
         const user = { email, creationTime };
 
         // Post the user data to backend
-        fetch("https://foodie-server-eight.vercel.app/users", {
+        fetch("https://foodie-server-sand.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
